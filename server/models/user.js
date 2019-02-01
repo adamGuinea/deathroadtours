@@ -5,24 +5,30 @@ const userSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
-        unique: true,
+        unique: true
     },
     username: {
         type: String,
         required: true,
-        unique: true,
+        unique: true
     },
     password: {
         type: String,
-        required: true,
+        required: true
     },
     profileImageUrl: {
-        type: String,
-    }
+        type: String
+    },
+    messages: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Message'
+        }
+    ]
 });
 
 userSchema.pre("save", async function(next){
-    try{
+    try {
         if(!this.isModified('password')){
             return next();
         }
