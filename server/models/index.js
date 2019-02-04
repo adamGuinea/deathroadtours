@@ -3,6 +3,7 @@ mongoose.set('debug', true);
 mongoose.Promise = Promise;
 mongoose.connect("mongodb://localhost/chatta", {
     keepAlive: true,
+    useNewUrlParser: true,
     // useMongoClient: true,
 });
 

@@ -41,13 +41,13 @@ userSchema.pre("save", async function(next){
 });
 
 userSchema.methods.comparePassword = async function(candidatePassword, next){
-    try{
+    try {
         let isMatch = await bcrypt.compare(candidatePassword, this.password);
         return isMatch;
     } catch (err){
         return next(err);
     }
-}
+};
 
 const User = mongoose.model("User", userSchema);
 
