@@ -1,10 +1,10 @@
-const mongoose = require('mongoose');
-mongoose.set('debug', true);
+const mongoose = require("mongoose");
+mongoose.set("debug", true);
 mongoose.Promise = Promise;
-mongoose.connect("mongodb://localhost/chatta", {
-    keepAlive: true,
-    useNewUrlParser: true,
-    // useMongoClient: true,
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/chatta", {
+  keepAlive: true,
+  useNewUrlParser: true
+  // useMongoClient: true,
 });
 
 module.exports.User = require("./user");

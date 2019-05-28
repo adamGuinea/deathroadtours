@@ -29,7 +29,7 @@ export default class AuthForm extends Component {
     };
 
     render(){
-        const {email, username, password, profileImageUrl} = this.state;
+        const {email, username, profileImageUrl} = this.state;
         const {
             heading, 
             buttonText, 
@@ -64,7 +64,7 @@ export default class AuthForm extends Component {
                         />
                         <label htmlFor='password'>Password:</label>
                         <input 
-                            className='form-control' 
+                            className='form-control margin-bottom' 
                             id='password' 
                             name='password' 
                             onChange={this.handleChange} 
@@ -83,7 +83,7 @@ export default class AuthForm extends Component {
                                 />
                                 <label htmlFor='image-url'>Image URL:</label>
                                 <input 
-                                    className='form-control' 
+                                    className='form-control margin-bottom' 
                                     id='image-url' 
                                     name='profileImageUrl' 
                                     onChange={this.handleChange} 

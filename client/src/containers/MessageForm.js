@@ -23,15 +23,15 @@ class MessageForm extends Component {
                 {this.props.errors.message && (
                     <div className="alert alert-danger">{this.props.errors.message}</div>
                 )}
-                <input 
+                <textarea 
                     type="text" 
-                    className="form-control" 
+                    className='form-control margin-bottom'
                     value={this.state.message} 
                     onChange={e => this.setState({message: e.target.value})}
                 />
                 <button 
                     type='submit' 
-                    className='btn btn-info pull-right'
+                    className='btn btn-info'
                 >
                     Post Message
                 </button>
