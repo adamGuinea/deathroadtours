@@ -46,7 +46,11 @@ const Homepage = ({ currentUser }) => {
             </div>
             <div className="user-nav__user">
               <img src={Person1} alt="user" className="user-nav__user-photo" />
-              <span className="user-nav__user-name">Humphrey</span>
+              <span className="user-nav__user-name">
+                <Link to="/signin" className="user-nav__link">
+                  Log in
+                </Link>
+              </span>
             </div>
           </nav>
         </header>
@@ -125,7 +129,7 @@ const Homepage = ({ currentUser }) => {
                 <svg className="overview__icon-location">
                   <use xlinkHref="/sprite.svg#icon-location-pin" />
                 </svg>
-                <button className="btn-inline">Bolivia</button>
+                <button className="btn-inline">Yungas, Bolivia</button>
               </div>
               <div className="overview__rating">
                 <div className="overview__rating-average">8.6</div>
@@ -193,7 +197,54 @@ const Homepage = ({ currentUser }) => {
                   </div>
                 </div>
               </div>
-              <div className="user-reviews">user reviews</div>
+              <div className="user-reviews">
+                <figure className="review">
+                  <blockquote className="review__text">
+                    The North Yungas road is truly treacherous but the views
+                    were 1000% worth it.
+                  </blockquote>
+                  <figcaption className="review__user">
+                    <img
+                      src={Friend2}
+                      alt="review 1"
+                      className="review__photo"
+                    />
+                    <div className="review__user-box">
+                      <p className="review__user-name">Jack Reacher</p>
+                      <p className="review__user-date">Feb 18, 2019</p>
+                    </div>
+                    <div className="review__rating">8.9</div>
+                  </figcaption>
+                </figure>
+                <figure className="review">
+                  <blockquote className="review__text">
+                    The guides made sure noone was left behind and were super
+                    helpful at pointing out the perfect photo opportunities.
+                  </blockquote>
+                  <figcaption className="review__user">
+                    <img
+                      src={Friend3}
+                      alt="review 2"
+                      className="review__photo"
+                    />
+                    <div className="review__user-box">
+                      <p className="review__user-name">Jane Holloway</p>
+                      <p className="review__user-date">Jan 30, 2019</p>
+                    </div>
+                    <div className="review__rating">8.2</div>
+                  </figcaption>
+                </figure>
+                <button className="btn-inline">
+                  Show all <span>&rarr;</span>
+                </button>
+              </div>
+            </div>
+            <div className="cta">
+              <h2 className="cta__book-now">Join the chat!</h2>
+              <Link to="/signup" className="btn">
+                <span className="btn__visible">Sign up</span>
+                <span className="btn__invisible">Only 5 spaces left</span>
+              </Link>
             </div>
           </main>
         </div>
