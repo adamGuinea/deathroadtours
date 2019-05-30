@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-import Logo from "../images/chatta-logo.png";
 import Person1 from "../images/person-2.jpg";
 import Cycle1 from "../images/cycle-1.jpg";
 import Cycle2 from "../images/cycle-2.jpg";
