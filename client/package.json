@@ -21,7 +21,7 @@
     "watch:sass": "node-sass ./src/sass/main.scss ./src/index.css -w",
     "devserver": "live-server",
     "startcss": "npm-run-all --parallel devserver watch:sass",
-    "compile:sass": "node-sass ./src/sass/main.scss ./src/comp.css",
+    "compile:sass": "node-sass ./src/sass/main.scss ./src/sass/comp.css",
     "prefix:css": "postcss --use autoprefixer -b 'last 5 versions' ./src/sass/comp.css -o ./src/sass/prefix.css",
     "compress:css": "node-sass ./src/sass/prefix.css ./src/index.css -output-style compressed",
     "build:css": "npm-run-all compile:sass prefix:css compress:css",

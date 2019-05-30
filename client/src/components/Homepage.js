@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Logo from "../images/chatta-logo.png";
 import Person1 from "../images/person-2.jpg";
 import Cycle1 from "../images/cycle-1.jpg";
@@ -15,45 +15,7 @@ let hRef = "#";
 const Homepage = ({ currentUser }) => {
   if (!currentUser.isAuthenticated) {
     return (
-      <div className="containers">
-        <header className="headers">
-          <img src={Logo} alt="logo" className="logo" />
-          <form action={hRef} className="search">
-            <input
-              type="text"
-              className="search__input"
-              placeholder="Search availability"
-            />
-            <button className="search__button">
-              <svg className="search__icon">
-                <use xlinkHref="/sprite.svg#icon-magnifying-glass" />
-              </svg>
-            </button>
-          </form>
-          <nav className="user-nav">
-            <div className="user-nav__icon-box">
-              <svg className="user-nav__icon">
-                <use xlinkHref="/sprite.svg#icon-bookmark" />
-              </svg>
-              <span className="user-nav__notification">7</span>
-            </div>
-
-            <div className="user-nav__icon-box">
-              <svg className="user-nav__icon">
-                <use xlinkHref="/sprite.svg#icon-chat" />
-              </svg>
-              <span className="user-nav__notification">13</span>
-            </div>
-            <div className="user-nav__user">
-              <img src={Person1} alt="user" className="user-nav__user-photo" />
-              <span className="user-nav__user-name">
-                <Link to="/signin" className="user-nav__link">
-                  Log in
-                </Link>
-              </span>
-            </div>
-          </nav>
-        </header>
+      <Fragment>
         <div className="content">
           <nav className="sidebar">
             <ul className="side-nav">
@@ -248,7 +210,7 @@ const Homepage = ({ currentUser }) => {
             </div>
           </main>
         </div>
-      </div>
+      </Fragment>
     );
   }
   return (

@@ -21,10 +21,10 @@ if (localStorage.jwtToken) {
 const App = () => (
   <Provider store={store}>
     <Router>
-      <Fragment>
+      <div className="containers">
         <Navbar />
         <Main />
-      </Fragment>
+      </div>
     </Router>
   </Provider>
 );
