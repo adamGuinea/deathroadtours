@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout } from "../store/actions/auth";
-import Person1 from "../images/person-2.jpg";
-
+import DefaultProfileImg from "../images/default-profile-image.jpg";
 import Logo from "../images/chatta-logo.png";
 let hRef = "#";
 
@@ -12,7 +11,11 @@ class Navbar extends Component {
     e.preventDefault();
     this.props.logout();
   };
+
   render() {
+    const { isAuthenticated } = this.props.currentUser;
+    const { profileImageUrl, id } = this.props.currentUser.user;
+
     return (
       <header className="headers">
         <Link to="/" className="user-nav__link">
@@ -45,34 +48,32 @@ class Navbar extends Component {
           </div>
           <div className="user-nav__user">
             <span className="user-nav__user-name">
-              {this.props.currentUser.isAuthenticated ? (
-                <ul className="nav navbar-nav navbar-right">
-                  <li>
-                    <Link
-                      to={`/users/${
-                        this.props.currentUser.user.id
-                      }/messages/new`}
-                      className="user-nav__link"
-                    >
-                      New Message
-                    </Link>
-                  </li>
-                </ul>
+              {isAuthenticated ? (
+                <Link
+                  to={`/users/${id}/messages/new`}
+                  className="user-nav__link"
+                >
+                  <ul className="nav navbar-nav navbar-right">
+                    <li>New Message</li>
+                  </ul>
+                </Link>
               ) : (
-                <ul className="nav navbar-nav navbar-right">
-                  <li>
-                    <Link to="/signup" className="user-nav__link">
-                      Sign up
-                    </Link>
-                  </li>
-                </ul>
+                <Link to="/signup" className="user-nav__link">
+                  <ul className="nav navbar-nav navbar-right">
+                    <li>Sign up</li>
+                  </ul>
+                </Link>
               )}
             </span>
           </div>
           <div className="user-nav__user">
-            <img src={Person1} alt="user" className="user-nav__user-photo" />
+            <img
+              src={profileImageUrl || DefaultProfileImg}
+              alt="user"
+              className="user-nav__user-photo"
+            />
             <span className="user-nav__user-name">
-              {this.props.currentUser.isAuthenticated ? (
+              {isAuthenticated ? (
                 <ul className="nav navbar-nav navbar-right">
                   <li>
                     <a

@@ -45,7 +45,7 @@ const Main = props => {
                 onAuth={authUser}
                 signUp
                 buttonText="Sign me up!"
-                heading="Join Chatta today"
+                heading="Join Death Road Tours today"
                 {...props}
               />
             );

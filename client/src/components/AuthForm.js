@@ -46,10 +46,10 @@ export default class AuthForm extends Component {
     });
 
     return (
-      <div className="auth-form">
-        <div className="col-md-6">
+      <div className="form">
+        <div className="col-md-4 col-sm-6">
           <form onSubmit={this.handleSubmit}>
-            <h2>{heading}</h2>
+            <h2 className="form__heading">{heading}</h2>
             {errors.message && (
               <div className="alert alert-danger">{errors.message}</div>
             )}
@@ -81,7 +81,7 @@ export default class AuthForm extends Component {
                   value={username}
                   type="text"
                 />
-                <label htmlFor="image-url">Image URL:</label>
+                <label htmlFor="image-url">Avatar URL:</label>
                 <input
                   className="form-control margin-bottom"
                   id="image-url"
@@ -92,7 +92,8 @@ export default class AuthForm extends Component {
                 />
               </div>
             )}
-            <button type="submit" className="btn btn-primary btn-block btn-lg">
+
+            <button className="btn__auth" type="submit">
               {buttonText}
             </button>
           </form>

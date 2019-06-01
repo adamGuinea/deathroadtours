@@ -11,6 +11,10 @@ import MessageTimeline from "./MessageTimeline";
 
 let hRef = "#";
 
+let d = new Date();
+let month = d.getMonth() + 1;
+let date = d.getDate() + "-" + month + "-" + d.getFullYear();
+
 const Homepage = ({ currentUser }) => {
   if (!currentUser.isAuthenticated) {
     return (
@@ -18,7 +22,7 @@ const Homepage = ({ currentUser }) => {
         <div className="content">
           <nav className="sidebar">
             <ul className="side-nav">
-              <li className="side-nav__item side-nav__item--active">
+              <li className="side-nav__item">
                 <a href={hRef} className="side-nav__link">
                   <svg className="side-nav__icon">
                     <use xlinkHref="/sprite.svg#icon-home" />
@@ -201,10 +205,10 @@ const Homepage = ({ currentUser }) => {
               </div>
             </div>
             <div className="cta">
-              <h2 className="cta__book-now">Join the chat!</h2>
+              <h2 className="cta__book-now"> 5 spots left for {date}</h2>
               <Link to="/signup" className="btn">
-                <span className="btn__visible">Sign up</span>
-                <span className="btn__invisible">Only 5 spaces left</span>
+                <span className="btn__visible">Join the chat</span>
+                <span className="btn__invisible">Only 5 spaces left!</span>
               </Link>
             </div>
           </main>

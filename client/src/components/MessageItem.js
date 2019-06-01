@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Moment from "react-moment";
 import { Link } from "react-router-dom";
 import DefaultProfileImg from "../images/default-profile-image.jpg";
@@ -13,31 +13,29 @@ const MessageItem = ({
   removeMessage,
   isCorrectUser
 }) => (
-  <div>
-    <li className="list-group-item">
+  <Fragment>
+    <li className="message__item">
       <img
         src={profileImageUrl || DefaultProfileImg}
         alt={username}
         height="100"
         width="100"
-        className="timeline-image"
+        className="message__image"
       />
-      <div className="message-area">
+      <div className="message__area">
         <Link to="/">@{username} &nbsp;</Link>
-        <span className="text-muted">
-          <Moment className="text-muted" format="Do MM YYYY">
-            {date}
-          </Moment>
+        <span className="message__date">
+          <Moment format="Do MM YYYY">{date}</Moment>
         </span>
         <p>{text}</p>
         {isCorrectUser && (
-          <a className="btn btn-danger" href={hRef} onClick={removeMessage}>
+          <a className="btn" href={hRef} onClick={removeMessage}>
             Delete
           </a>
         )}
       </div>
     </li>
-  </div>
+  </Fragment>
 );
 
 export default MessageItem;

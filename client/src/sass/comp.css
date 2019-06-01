@@ -39,56 +39,9 @@ body {
   background-repeat: no-repeat;
   min-height: 100vh; }
 
-/* navbar */
-.navbar {
-  margin-bottom: 1rem; }
-
-.navbar a {
-  font-weight: bold;
-  color: white; }
-
-.navbar a:hover {
-  color: white;
-  text-decoration: underline;
-  cursor: pointer; }
-
-.navbar-brand > img {
-  display: inline-block;
-  width: 30px;
-  margin-bottom: 2px;
-  margin-right: 5px;
-  border-radius: 2px; }
-
-ul.nav.navbar-nav li {
-  margin: 0 0.5rem; }
-
-.onboarding > .navbar {
-  background-image: url("../images/nav-bg.png");
-  background-size: 100% 100%; }
-
-#messages .list-group-item {
-  display: flex;
-  align-items: flex-start;
-  padding: 7px 20px 12px; }
-
-#messages:not(.no-hover) .list-group-item:hover {
-  background-color: #e6ecf0; }
-
-.timeline-image {
-  border-radius: 50px;
-  height: 40px;
-  width: 40px;
-  margin: 2px 30px 10px 10px; }
-
-.btn:hover {
-  cursor: pointer; }
-
 a.btn.btn-danger,
 a.btn.btn-danger:hover {
   color: white; }
-
-.margin-bottom {
-  margin-bottom: 15px; }
 
 .containers {
   max-width: 120rem;
@@ -166,6 +119,11 @@ a.btn.btn-danger:hover {
   display: flex;
   flex-direction: column;
   align-items: center; }
+
+.timeline {
+  display: flex;
+  padding: 3rem;
+  min-height: 100vh; }
 
 .logo {
   height: 3.25rem;
@@ -398,6 +356,8 @@ a.btn.btn-danger:hover {
   background-color: transparent;
   cursor: pointer;
   transition: all 0.2s; }
+  .btn-inline__auth {
+    padding-top: 3rem; }
   .btn-inline span {
     margin-left: 3px;
     transition: margin-left 0.2s; }
@@ -561,3 +521,46 @@ a.btn.btn-danger:hover {
   .btn:focus {
     outline: none;
     animation: pulsate 1s infinite; }
+  .btn__auth {
+    margin-top: 2rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    cursor: pointer; }
+
+.form {
+  padding-top: 2rem;
+  font-size: 1.4rem; }
+  .form__heading {
+    padding-bottom: 2rem; }
+
+.user-aside {
+  width: 20rem; }
+  @media only screen and (max-width: 48.75em) {
+    .user-aside {
+      display: none; } }
+
+.message {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20rem; }
+  .message__item {
+    display: flex;
+    font-size: 1.5rem;
+    list-style: none;
+    border: 1px solid var(--color-grey-light-4);
+    border-radius: 0.5rem;
+    width: 50rem;
+    transition: all 0.3s; }
+    .message__item:hover {
+      font-size: 1.55rem;
+      background-color: #e6ecf0; }
+  .message__image {
+    height: 3.75rem;
+    width: 3.75rem;
+    border-radius: 50%;
+    margin: 1rem; }
+  .message__area {
+    padding: 1rem; }
+  @media only screen and (max-width: 48.75em) {
+    .message {
+      padding-left: 0; } }

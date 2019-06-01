@@ -345,6 +345,10 @@
   cursor: pointer;
   transition: all 0.2s;
 
+  &__auth {
+    padding-top: 3rem;
+  }
+
   & span {
     margin-left: 3px;
     transition: margin-left 0.2s;
@@ -603,5 +607,74 @@
   &:focus {
     outline: none;
     animation: pulsate 1s infinite;
+  }
+
+  &__auth {
+    margin-top: 2rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    cursor: pointer;
+  }
+}
+
+////////////
+//AUTH FORM
+
+.form {
+  padding-top: 2rem;
+  font-size: 1.4rem;
+
+  &__heading {
+    padding-bottom: 2rem;
+  }
+}
+
+////////////
+//USER ASIDE
+
+.user-aside {
+  width: 20rem;
+
+  @media only screen and (max-width: $bp-smallish) {
+    display: none;
+  }
+}
+
+///////////////
+//MESSAGE LIST
+
+.message {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20rem;
+
+  &__item {
+    display: flex;
+    font-size: 1.5rem;
+    list-style: none;
+    border: 1px solid var(--color-grey-light-4);
+    border-radius: 0.5rem;
+    width: 50rem;
+    transition: all 0.3s;
+
+    &:hover {
+      font-size: 1.55rem;
+      background-color: #e6ecf0;
+    }
+  }
+
+  &__image {
+    height: 3.75rem;
+    width: 3.75rem;
+    border-radius: 50%;
+    margin: 1rem;
+  }
+
+  &__area {
+    padding: 1rem;
+  }
+
+  @media only screen and (max-width: $bp-smallish) {
+    padding-left: 0;
   }
 }
