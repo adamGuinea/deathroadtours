@@ -1,4 +1,3 @@
-# chatta
+# DeathRoadTours
 
-Messaging app built with React and Redux, backed up by Mongo database, follow <a href="https://chatta-client.herokuapp.com/">this link</a> to see and sign in with email 'user@gmail.com' and password 'user'.
-
+Tour site built with React and Redux, backed up by Mongo database, follow <a href="https://deathroadtours.herokuapp.com/">this link</a> to see and sign in with email 'user@gmail.com' and password 'user'.

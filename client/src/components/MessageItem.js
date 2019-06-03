@@ -11,7 +11,8 @@ const MessageItem = ({
   text,
   username,
   removeMessage,
-  isCorrectUser
+  isCorrectUser,
+  receiveLike
 }) => (
   <Fragment>
     <li className="message__item">
@@ -24,7 +25,7 @@ const MessageItem = ({
       />
       <div className="message__area">
         <Link to="/">@{username} &nbsp;</Link>
-        <span className="message__date">
+        <span className="message__area-date">
           <Moment format="Do MM YYYY">{date}</Moment>
         </span>
         <p>{text}</p>
@@ -32,6 +33,13 @@ const MessageItem = ({
           <a className="btn" href={hRef} onClick={removeMessage}>
             Delete
           </a>
+        )}
+        {receiveLike && (
+          <div className="message__area-like">
+            <svg className="message__area-like-icon">
+              <use xlinkHref="/sprite.svg#icon-thumbs-up" />
+            </svg>
+          </div>
         )}
       </div>
     </li>
