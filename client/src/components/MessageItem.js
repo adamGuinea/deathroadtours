@@ -35,11 +35,14 @@ const MessageItem = ({
           </a>
         )}
         {receiveLike && (
-          <div className="message__area-like">
-            <svg className="message__area-like-icon">
-              <use xlinkHref="/sprite.svg#icon-thumbs-up" />
-            </svg>
-          </div>
+          <Fragment>
+            <div tabindex="1" className="message__area-like">
+              <svg className="message__area-like-icon">
+                <use xlinkHref="/sprite.svg#icon-thumbs-up" />
+              </svg>
+            </div>
+            <span className="message__item-notification">1</span>
+          </Fragment>
         )}
       </div>
     </li>
