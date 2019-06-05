@@ -5,14 +5,15 @@ const {
   createMessage,
   getMessage,
   deleteMessage,
-  addLike
+  likeMessage
 } = require("../handlers/messages");
 
-router.route("/").post(createMessage, addLike);
+router.route("/").post(createMessage);
 
 router
   .route("/:message_id")
   .get(getMessage)
-  .delete(deleteMessage);
+  .delete(deleteMessage)
+  .put(likeMessage);
 
 module.exports = router;

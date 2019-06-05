@@ -11,22 +11,10 @@ exports.createMessage = async function(req, res, next) {
     await foundUser.save();
     let foundMessage = await db.Message.findById(message._id).populate("user", {
       username: true,
-      profileImageUrl: true
+      profileImageUrl: true,
+      likes: true
     });
     return res.status(200).json(foundMessage);
-  } catch (err) {
-    return next(err);
-  }
-};
-
-exports.addLike = async function(req, res, next) {
-  try {
-    await db.Message.findByIdAndUpdate(
-      req.body.message_id,
-      { $push: { likes: req.body.user_id } },
-      { new: true }
-    );
-    return res.status(200).json(res);
   } catch (err) {
     return next(err);
   }
@@ -46,6 +34,19 @@ exports.deleteMessage = async function(req, res, next) {
     let foundMessage = await db.Message.findById(req.params.message_id);
     await foundMessage.remove();
     return res.status(200).json(foundMessage);
+  } catch (err) {
+    return next(err);
+  }
+};
+
+exports.likeMessage = async function(req, res, next) {
+  try {
+    let like = await db.Message.findById(req.params.message_id, {
+      $inc: { "message.likes": 1 }
+    });
+    console.log(message);
+    await like.save();
+    return res.status(200).json(next);
   } catch (err) {
     return next(err);
   }

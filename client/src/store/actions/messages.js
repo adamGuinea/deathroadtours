@@ -1,6 +1,6 @@
 import { apiCall } from "../../services/api";
 import { addError } from "./errors";
-import { LOAD_MESSAGES, REMOVE_MESSAGE } from "../actionTypes";
+import { LOAD_MESSAGES, REMOVE_MESSAGE, LIKE_MESSAGE } from "../actionTypes";
 
 export const loadMessages = messages => ({
   type: LOAD_MESSAGES,
@@ -12,21 +12,17 @@ export const remove = id => ({
   id
 });
 
-const incrementLike = (likes, id) => {
+export const like = id => {
   return {
-    type: "INCREASE_LIKE",
-    likes,
+    type: LIKE_MESSAGE,
     id
   };
 };
 
-export const increaseLike = (likes, message_id) => {
-  const addLike = Object.assign({}, message_id, { likes: likes + 1 });
+export const likeMessage = (user_id, message_id) => {
   return dispatch => {
-    return apiCall("post", `/api/users/${message_id}/messages`, { addLike })
-      .then(res => {
-        dispatch(incrementLike(likes, message_id));
-      })
+    return apiCall("put", `/api/users/${user_id}/messages/${message_id}`)
+      .then(() => dispatch(like(message_id)))
       .catch(err => addError(err.message));
   };
 };
