@@ -27,7 +27,7 @@ exports.ensureCorrectUser = function(req, res, next) {
       if (decoded && decoded.id === req.params.id) {
         return next();
       } else {
-        return next({ status: 200, message: "Unauthorised" });
+        return next({ status: 200, message: "Authorised" });
       }
     });
   } catch (err) {

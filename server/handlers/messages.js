@@ -41,12 +41,15 @@ exports.deleteMessage = async function(req, res, next) {
 
 exports.likeMessage = async function(req, res, next) {
   try {
-    let like = await db.Message.findById(req.params.message_id, {
-      $inc: { "message.likes": 1 }
-    });
-    console.log(message);
+    let like = await db.Message.findOneAndUpdate(
+      req.params.message_id,
+      {
+        $inc: { "message.$.likes": 1 }
+      },
+      { new: true }
+    );
     await like.save();
-    return res.status(200).json(next);
+    return res.status(200).json(like);
   } catch (err) {
     return next(err);
   }

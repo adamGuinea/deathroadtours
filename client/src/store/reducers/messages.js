@@ -11,7 +11,6 @@ const message = (state = [], action) => {
     case LIKE_MESSAGE:
       return state.map(message => {
         if (message._id === action.id) {
-          console.log(message.likes);
           return Object.assign({}, message, { likes: message.likes + 1 });
         }
         return message;

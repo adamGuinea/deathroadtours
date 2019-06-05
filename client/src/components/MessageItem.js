@@ -50,7 +50,11 @@ class MessageItem extends Component {
             )}
             {!isCorrectUser && (
               <Fragment>
-                <div onClick={this.handleOnLike} className="message__area-like">
+                <div
+                  tabIndex="1"
+                  onClick={this.handleOnLike}
+                  className="message__area-like"
+                >
                   <svg className="message__area-like-icon">
                     <use xlinkHref="/sprite.svg#icon-thumbs-up" />
                   </svg>
