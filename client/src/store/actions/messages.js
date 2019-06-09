@@ -12,11 +12,10 @@ export const remove = id => ({
   id
 });
 
-export const like = (id, message) => {
+export const like = id => {
   return {
     type: LIKE_MESSAGE,
-    id,
-    message
+    id
   };
 };
 
