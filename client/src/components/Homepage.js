@@ -9,6 +9,8 @@ import Friend3 from "../images/friend-3.jpg";
 import { Link } from "react-router-dom";
 import MessageTimeline from "./MessageTimeline";
 
+let videoSrc = "https://www.youtube.com/embed/dLhObpqwDWw";
+
 let hRef = "#";
 
 let d = new Date();
@@ -134,6 +136,30 @@ const Homepage = ({ currentUser }) => {
                   <li className="list__item">Pickup from your hotel</li>
                   <li className="list__item">Regular photo stops</li>
                 </ul>
+                <div
+                  className="tour-video"
+                  style={{
+                    position: "relative",
+                    paddingBottom: "56.25%" /* 16:9 */,
+                    marginBottom: "3rem",
+                    paddingTop: "3rem",
+                    height: 0
+                  }}
+                >
+                  <iframe
+                    title="tour video"
+                    className="tour-video__player"
+                    style={{
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      width: "100%",
+                      height: "100%"
+                    }}
+                    src={videoSrc}
+                    frameBorder="0"
+                  />
+                </div>
                 <div className="recommend">
                   <p className="recommend__count">
                     Adam and 3 other friends recommend this tour.

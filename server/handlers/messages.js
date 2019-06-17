@@ -23,7 +23,6 @@ exports.createMessage = async function(req, res, next) {
 exports.getMessage = async function(req, res, next) {
   try {
     let message = await db.Message.find(req.params.message_id);
-    console.log("found ur msgs");
     return res.status(200).json(message);
   } catch (err) {
     return next(err);
@@ -34,6 +33,7 @@ exports.deleteMessage = async function(req, res, next) {
   try {
     let foundMessage = await db.Message.findById(req.params.message_id);
     await foundMessage.remove();
+    console.log("removing");
     return res.status(200).json(foundMessage);
   } catch (err) {
     return next(err);
@@ -42,17 +42,14 @@ exports.deleteMessage = async function(req, res, next) {
 
 exports.likeMessage = async function(req, res, next) {
   try {
-    let like = await db.Message.update(
+    let likedMessage = await db.Message.findById(
       req.params.message_id,
-      req.body,
       {
         $inc: { "message.$.likes": 1 }
       },
       { new: true }
     );
-    console.log("updated like");
-    await like.save();
-    return res.status(200).json(like);
+    return res.status(200).json(likedMessage);
   } catch (err) {
     return next(err);
   }

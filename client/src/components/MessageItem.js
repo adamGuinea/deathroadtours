@@ -11,7 +11,6 @@ class MessageItem extends Component {
   handleOnLike = event => {
     this.setState({
       showLikes: true
-      // likes: this.state.likes + 1
     });
     this.props.likeMessage(this.props.likes, this.props.message);
   };
@@ -26,7 +25,6 @@ class MessageItem extends Component {
       removeMessage,
       isCorrectUser
     } = this.props;
-
     return (
       <Fragment>
         <li className="message__item">
