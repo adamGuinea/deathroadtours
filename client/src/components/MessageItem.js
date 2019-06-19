@@ -6,7 +6,7 @@ import DefaultProfileImg from "../images/default-profile-image.jpg";
 let hRef = "#";
 
 class MessageItem extends Component {
-  state = { showLikes: false };
+  state = { showLikes: true };
 
   handleOnLike = event => {
     this.setState({

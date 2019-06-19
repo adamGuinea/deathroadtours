@@ -21,7 +21,7 @@ export const like = id => {
 
 export const likeMessage = (user_id, message_id) => {
   return dispatch => {
-    return apiCall("put", `/api/users/${user_id}/messages/${message_id}`)
+    return apiCall("put", `/api/update/${message_id}`)
       .then(() => dispatch(like(message_id)))
       .catch(err => addError(err.message));
   };

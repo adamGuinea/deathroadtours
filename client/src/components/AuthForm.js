@@ -86,6 +86,7 @@ export default class AuthForm extends Component {
                   className="form-control margin-bottom"
                   id="image-url"
                   name="profileImageUrl"
+                  placeHolder="not required"
                   onChange={this.handleChange}
                   type="text"
                   value={profileImageUrl}

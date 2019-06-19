@@ -33,7 +33,6 @@ exports.deleteMessage = async function(req, res, next) {
   try {
     let foundMessage = await db.Message.findById(req.params.message_id);
     await foundMessage.remove();
-    console.log("removing");
     return res.status(200).json(foundMessage);
   } catch (err) {
     return next(err);
@@ -42,13 +41,13 @@ exports.deleteMessage = async function(req, res, next) {
 
 exports.likeMessage = async function(req, res, next) {
   try {
-    let likedMessage = await db.Message.findById(
+    let likedMessage = await db.Message.findByIdAndUpdate(
       req.params.message_id,
-      {
-        $inc: { "message.$.likes": 1 }
-      },
+      req.body,
       { new: true }
     );
+    likedMessage.likes += 1;
+    await likedMessage.save();
     return res.status(200).json(likedMessage);
   } catch (err) {
     return next(err);

@@ -7,6 +7,7 @@ const errorHandler = require("./handlers/error");
 const authRoutes = require("./routes/auth");
 const db = require("./models");
 const messagesRoutes = require("./routes/messages");
+const updateRoutes = require("./routes/updateRoutes");
 const { loginRequired, ensureCorrectUser } = require("./middleware/auth");
 const PORT = process.env.PORT || 8081;
 
@@ -20,6 +21,8 @@ app.use(
   ensureCorrectUser,
   messagesRoutes
 );
+
+app.use("/api/update", loginRequired, updateRoutes);
 
 app.get("/api/messages", loginRequired, async function(req, res, next) {
   try {
