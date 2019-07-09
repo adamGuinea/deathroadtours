@@ -19,21 +19,23 @@ class MessageForm extends Component {
 
   render() {
     return (
-      <div className="form">
-        <div className="col-md-4 col-sm-6">
+      <div className='form'>
+        <div className='col-md-4 col-sm-6'>
           <form onSubmit={this.handleNewMessage}>
             {this.props.errors.message && (
-              <div className="alert alert-danger">
+              <div className='alert alert-danger'>
                 {this.props.errors.message}
               </div>
             )}
             <textarea
-              type="text"
-              className="form-control"
+              type='text'
+              cols='20'
+              rows='10'
+              className='form-control'
               value={this.state.message}
               onChange={e => this.setState({ message: e.target.value })}
             />
-            <button type="submit" className="btn__auth">
+            <button type='submit' className='btn__auth'>
               Post Message
             </button>
           </form>

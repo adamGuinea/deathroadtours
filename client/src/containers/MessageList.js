@@ -26,7 +26,7 @@ class MessageList extends Component {
         isCorrectUser={currentUser === m.user._id}
       />
     ));
-    return <ul className="message">{messageList}</ul>;
+    return <ul className='message'>{messageList}</ul>;
   }
 }
 

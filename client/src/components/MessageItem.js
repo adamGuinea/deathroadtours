@@ -27,38 +27,38 @@ class MessageItem extends Component {
     } = this.props;
     return (
       <Fragment>
-        <li className="message__item">
+        <li className='message__item'>
           <img
             src={profileImageUrl || DefaultProfileImg}
             alt={username}
-            height="100"
-            width="100"
-            className="message__image"
+            height='100'
+            width='100'
+            className='message__image'
           />
-          <div className="message__area">
-            <Link to="/">@{username} &nbsp;</Link>
-            <span className="message__area-date">
-              <Moment format="Do MM YYYY">{date}</Moment>
+          <div className='message__area'>
+            <Link to='/'>@{username} &nbsp;</Link>
+            <span className='message__area-date'>
+              <Moment format='Do MM YYYY'>{date}</Moment>
             </span>
             <p>{text}</p>
             {isCorrectUser && (
-              <a className="btn" href={hRef} onClick={removeMessage}>
+              <a className='btn' href={hRef} onClick={removeMessage}>
                 Delete
               </a>
             )}
             {!isCorrectUser && (
               <Fragment>
                 <div
-                  tabIndex="1"
+                  tabIndex='1'
                   onClick={this.handleOnLike}
-                  className="message__area-like"
+                  className='message__area-like'
                 >
-                  <svg className="message__area-like-icon">
-                    <use xlinkHref="/sprite.svg#icon-thumbs-up" />
+                  <svg className='message__area-like-icon'>
+                    <use xlinkHref='/sprite.svg#icon-thumbs-up' />
                   </svg>
                 </div>
                 {this.state.showLikes ? (
-                  <span className="message__item-notification">{likes}</span>
+                  <span className='message__item-notification'>{likes}</span>
                 ) : null}
               </Fragment>
             )}
