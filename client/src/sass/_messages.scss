@@ -1,0 +1,118 @@
+///////////////
+//MESSAGE LIST
+
+.message {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20rem;
+
+  &__item {
+    position: relative;
+    display: flex;
+    font-size: 1.5rem;
+    list-style: none;
+    border: 1px solid var(--color-grey-light-4);
+    border-radius: 0.5rem;
+    width: 50rem;
+    transition: all 0.3s;
+
+    &:hover {
+      font-size: 1.55rem;
+      background-color: #e6ecf0;
+    }
+
+    &-notification {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      background-color: var(--color-grey-light-4);
+      border-radius: 50%;
+      bottom: 2.6rem;
+      right: 2.6rem;
+      color: #fff;
+      height: 2rem;
+      width: 2rem;
+      z-index: 9;
+    }
+
+    @media only screen and (max-width: $bp-smallest) {
+      padding-left: 0;
+      max-width: 35rem;
+    }
+  }
+
+  &__image {
+    height: 3.75rem;
+    width: 3.75rem;
+    border-radius: 50%;
+    margin: 1rem;
+  }
+
+  &__area {
+    padding: 1rem;
+
+    &-like {
+      position: absolute;
+      height: 2.5rem;
+      width: 2.5rem;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background-image: url("../images/thumbs-up.svg");
+      background-size: cover;
+      z-index: 10;
+      transition: 0.2s;
+      transform: scale(1);
+
+      @supports (-webkit-mask-image: url()) or (-webkit-mask-image: url()) {
+        background-color: var(--color-primary);
+        -webkit-mask-image: url("../images/thumbs-up.svg");
+        -webkit-mask-size: cover;
+        mask-image: url("../images/thumbs-up.svg");
+        mask-size: cover;
+        background-image: none;
+        cursor: pointer;
+
+        &-icon {
+          position: relative;
+          display: flex;
+          fill: var(--color-primary);
+          width: inherit;
+          height: inherit;
+          overflow: hidden;
+        }
+
+        @keyframes pulse {
+          0% {
+            transform: scale(1);
+          }
+
+          50% {
+            transform: scale(1.6);
+          }
+
+          100% {
+            transform: scale(1);
+          }
+        }
+
+        &:focus + .message__item-notification {
+          display: flex;
+          animation: pulse 0.5s;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: $bp-smallish) {
+    padding-left: 0;
+    width: 30rem;
+  }
+}
+///////////////
+//MESSAGE-FORM
+
+.form-control {
+  font-size: 1.6rem;
+}

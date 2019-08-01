@@ -46,55 +46,55 @@ export default class AuthForm extends Component {
     });
 
     return (
-      <div className="form">
-        <div className="col-md-4 col-sm-6">
+      <div className='form'>
+        <div className='col-md-4 col-sm-6'>
           <form onSubmit={this.handleSubmit}>
-            <h2 className="form__heading">{heading}</h2>
+            <h2 className='form__heading'>{heading}</h2>
             {errors.message && (
-              <div className="alert alert-danger">{errors.message}</div>
+              <div className='alert alert-danger'>{errors.message}</div>
             )}
-            <label htmlFor="email">Email:</label>
+            <label htmlFor='email'>Email:</label>
             <input
-              className="form-control"
-              id="email"
-              name="email"
+              className='form-control'
+              id='email'
+              name='email'
               onChange={this.handleChange}
               value={email}
-              type="text"
+              type='text'
             />
-            <label htmlFor="password">Password:</label>
+            <label htmlFor='password'>Password:</label>
             <input
-              className="form-control margin-bottom"
-              id="password"
-              name="password"
+              className='form-control margin-bottom'
+              id='password'
+              name='password'
               onChange={this.handleChange}
-              type="password"
+              type='password'
             />
             {signUp && (
               <div>
-                <label htmlFor="username">Username:</label>
+                <label htmlFor='username'>Username:</label>
                 <input
-                  className="form-control"
-                  id="username"
-                  name="username"
+                  className='form-control'
+                  id='username'
+                  name='username'
                   onChange={this.handleChange}
                   value={username}
-                  type="text"
+                  type='text'
                 />
-                <label htmlFor="image-url">Avatar URL:</label>
+                <label htmlFor='image-url'>Avatar URL:</label>
                 <input
-                  className="form-control margin-bottom"
-                  id="image-url"
-                  name="profileImageUrl"
-                  placeHolder="not required"
+                  className='form-control margin-bottom'
+                  id='image-url'
+                  name='profileImageUrl'
+                  placeholder='not required'
                   onChange={this.handleChange}
-                  type="text"
+                  type='text'
                   value={profileImageUrl}
                 />
               </div>
             )}
 
-            <button className="btn__auth" type="submit">
+            <button className='btn__auth' type='submit'>
               {buttonText}
             </button>
           </form>
