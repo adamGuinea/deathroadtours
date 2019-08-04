@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout } from "../store/actions/auth";
@@ -327,7 +327,93 @@ class Navbar extends Component {
             </div>
           </div>
 
-          <div className='user-nav__user'>
+          {isAuthenticated ? (
+            <Fragment>
+              <div className='user-nav__user'>
+                <img
+                  src={profileImageUrl || DefaultProfileImg}
+                  alt='user'
+                  className='user-nav__user-photo'
+                />
+                <span className='user-nav__user-name'>
+                  <Link
+                    to={`/users/${id}/messages/new`}
+                    className='user-nav__link'
+                  >
+                    <ul className='nav navbar-nav navbar-right'>
+                      <li>New Message</li>
+                    </ul>
+                  </Link>
+                </span>
+              </div>
+              <div className='user-nav__user'>
+                <span className='user-nav__user-name'>
+                  <ul className='nav navbar-nav navbar-right'>
+                    <li>
+                      <Link
+                        onClick={this.logout}
+                        to={hRef}
+                        className='user-nav__link'
+                      >
+                        <svg class='user-nav_profile_icon'>
+                          <use xlinkHref='/sprite.svg#icon-user-plus' />
+                        </svg>
+                        Logout
+                      </Link>
+                    </li>
+                  </ul>
+                </span>
+              </div>
+            </Fragment>
+          ) : (
+            <div className='user-nav__user'>
+              <img
+                src={profileImageUrl || DefaultProfileImg}
+                alt='user'
+                className='user-nav__user-photo'
+              />
+              <span className='user-nav__user-name'>Account</span>
+              <div class='user-nav_profile'>
+                <div class='user-nav_profile_item-box'>
+                  <div class='user-nav_profile_item'>
+                    <Link to='/signin' className='user-nav__link'>
+                      <svg class='user-nav_profile_icon'>
+                        <use xlinkHref='/sprite.svg#icon-user' />
+                      </svg>
+                      Log in
+                    </Link>
+                  </div>
+                  <div class='user-nav_profile_item'>
+                    <Link to='/signup' className='user-nav__link'>
+                      <svg class='user-nav_profile_icon'>
+                        <use xlinkHref='/sprite.svg#icon-user-plus' />
+                      </svg>
+                      Sign up
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </nav>
+      </header>
+    );
+  }
+}
+
+function mapStateToProps(state) {
+  return {
+    currentUser: state.currentUser
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  { logout }
+)(Navbar);
+
+{
+  /* <div className='user-nav__user'>
             <span className='user-nav__user-name'>
               {isAuthenticated ? (
                 <Link
@@ -376,20 +462,5 @@ class Navbar extends Component {
                 </ul>
               )}
             </span>
-          </div>
-        </nav>
-      </header>
-    );
-  }
+          </div> */
 }
-
-function mapStateToProps(state) {
-  return {
-    currentUser: state.currentUser
-  };
-}
-
-export default connect(
-  mapStateToProps,
-  { logout }
-)(Navbar);

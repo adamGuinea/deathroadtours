@@ -365,6 +365,7 @@
 }
 
 .user-nav {
+  position: relative;
   &__icon-box:active &_chat,
   &__icon-box:hover &_chat {
     opacity: 1;
@@ -461,9 +462,6 @@
     transition: all 0.2s;
     max-height: none;
 
-    opacity: 0;
-    visibility: hidden;
-
     &_header {
       font-size: 1.8rem;
       width: 100%;
@@ -508,8 +506,8 @@
     }
 
     &_icon {
-      width: 1.5rem;
-      height: 1.5rem;
+      width: 2rem;
+      height: 2rem;
       fill: var(--color-grey-dark-2);
       margin: auto 1rem;
     }
