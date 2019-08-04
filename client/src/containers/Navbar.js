@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout } from "../store/actions/auth";
 import DefaultProfileImg from "../images/default-profile-image.jpg";
+import { UserPlusSVG } from "../images/SVG/UserPlusSVG";
+import { UserSVG } from "../images/SVG/UserSVG";
+import { UserLogoutSVG } from "../images/SVG/UserLogoutSVG";
 import hotel1 from "../images/hotel-1.jpg";
 import hotel2 from "../images/hotel-2.jpg";
 import hotel3 from "../images/hotel-3.jpg";
@@ -355,9 +358,7 @@ class Navbar extends Component {
                         to={hRef}
                         className='user-nav__link'
                       >
-                        <svg class='user-nav_profile_icon'>
-                          <use xlinkHref='/sprite.svg#icon-user-plus' />
-                        </svg>
+                        <UserLogoutSVG />
                         Logout
                       </Link>
                     </li>
@@ -377,17 +378,13 @@ class Navbar extends Component {
                 <div class='user-nav_profile_item-box'>
                   <div class='user-nav_profile_item'>
                     <Link to='/signin' className='user-nav__link'>
-                      <svg class='user-nav_profile_icon'>
-                        <use xlinkHref='/sprite.svg#icon-user' />
-                      </svg>
+                      <UserSVG />
                       Log in
                     </Link>
                   </div>
                   <div class='user-nav_profile_item'>
                     <Link to='/signup' className='user-nav__link'>
-                      <svg class='user-nav_profile_icon'>
-                        <use xlinkHref='/sprite.svg#icon-user-plus' />
-                      </svg>
+                      <UserPlusSVG />
                       Sign up
                     </Link>
                   </div>
@@ -411,56 +408,3 @@ export default connect(
   mapStateToProps,
   { logout }
 )(Navbar);
-
-{
-  /* <div className='user-nav__user'>
-            <span className='user-nav__user-name'>
-              {isAuthenticated ? (
-                <Link
-                  to={`/users/${id}/messages/new`}
-                  className='user-nav__link'
-                >
-                  <ul className='nav navbar-nav navbar-right'>
-                    <li>New Message</li>
-                  </ul>
-                </Link>
-              ) : (
-                <Link to='/signup' className='user-nav__link'>
-                  <ul className='nav navbar-nav navbar-right'>
-                    <li>Sign up</li>
-                  </ul>
-                </Link>
-              )}
-            </span>
-          </div>
-          <div className='user-nav__user'>
-            <img
-              src={profileImageUrl || DefaultProfileImg}
-              alt='user'
-              className='user-nav__user-photo'
-            />
-            <span className='user-nav__user-name'>
-              {isAuthenticated ? (
-                <ul className='nav navbar-nav navbar-right'>
-                  <li>
-                    <a
-                      onClick={this.logout}
-                      href={hRef}
-                      className='user-nav__link'
-                    >
-                      Log out
-                    </a>
-                  </li>
-                </ul>
-              ) : (
-                <ul className='nav navbar-nav navbar-right'>
-                  <li>
-                    <Link to='/signin' className='user-nav__link'>
-                      Log in
-                    </Link>
-                  </li>
-                </ul>
-              )}
-            </span>
-          </div> */
-}

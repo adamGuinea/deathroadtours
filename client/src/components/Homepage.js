@@ -14,9 +14,8 @@ let videoSrc = "https://www.youtube.com/embed/dLhObpqwDWw";
 
 let hRef = "#";
 
-let d = new Date();
-let month = d.getMonth() + 1;
-let date = d.getDate() + "-" + month + "-" + d.getFullYear();
+var today = new Date();
+var tomorrow = new Date();
 
 const Homepage = ({ currentUser }) => {
   if (!currentUser.isAuthenticated) {
@@ -234,7 +233,10 @@ const Homepage = ({ currentUser }) => {
             <div className='cta'>
               <h2 className='cta__book-now'>
                 {" "}
-                5 spots left for <Moment format='D MMM YYYY'>{date}</Moment>
+                5 spots left for the{" "}
+                <Moment format='Do MMM YYYY'>
+                  {tomorrow.setDate(today.getDate() + 1)}
+                </Moment>
               </h2>
               <Link to='/signup' className='btn'>
                 <span className='btn__visible'>Join the chat</span>
