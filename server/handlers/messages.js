@@ -41,14 +41,22 @@ exports.deleteMessage = async function(req, res, next) {
 
 exports.likeMessage = async function(req, res, next) {
   try {
-    let likedMessage = await db.Message.findByIdAndUpdate(
+    const likedMessage = await db.Message.findOneAndUpdate(
       req.params.message_id,
-      req.body,
-      { new: true }
     );
-    likedMessage.likes += 1;
+
+    if (
+      likedMessage.likes.filter(like => like.user.toString() === req.user.id)
+        .length > 0
+    ) {
+      return res.status(400).json({ msg: "Post already liked" });
+    }
+
+    likedMessage.likes.unshift({ user: req.user });
+
     await likedMessage.save();
-    return res.status(200).json(likedMessage);
+
+    res.json(likedMessage.likes);
   } catch (err) {
     return next(err);
   }

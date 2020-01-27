@@ -21,7 +21,7 @@ class MessageList extends Component {
         likes={m.likes}
         username={m.user.username}
         profileImageUrl={m.user.profileImageUrl}
-        likeMessage={likeMessage.bind(this, m.user._id, m._id)}
+        likeMessage={likeMessage.bind(this, m._id)}
         removeMessage={removeMessage.bind(this, m.user._id, m._id)}
         isCorrectUser={currentUser === m.user._id}
       />
@@ -32,7 +32,6 @@ class MessageList extends Component {
 
 function mapStateToProps(state) {
   return {
-    likes: state.messages.map(message => message.likes),
     messages: state.messages,
     currentUser: state.currentUser.user.id
   };

@@ -9,13 +9,14 @@ const message = (state = [], action) => {
       return state.filter(message => message._id !== action.id);
 
     case LIKE_MESSAGE:
-      return state.map(message => {
-        if (message._id === action.id) {
-          return Object.assign({}, message, { likes: message.likes + 1 });
-        }
-        return message;
-      });
-
+      return {
+        ...state,
+        messages: state.messages.map(message =>
+          message._id === action.payload.id
+            ? { ...message, likes: action.payload.likes }
+            : message
+        )
+      };
     default:
       return state;
   }
