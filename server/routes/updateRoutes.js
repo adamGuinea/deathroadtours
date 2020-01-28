@@ -3,6 +3,6 @@ const router = express.Router({ mergeParams: true });
 
 const { likeMessage } = require("../handlers/messages");
 
-router.route("/:message_id").put(likeMessage);
+router.route("/:message_id/:current_user").put(likeMessage);
 
 module.exports = router;
