@@ -44,11 +44,12 @@ exports.likeMessage = async function(req, res, next) {
     const likedMessage = await db.Message.findOneAndUpdate(
       req.params.message_id
     );
-    const currentUser = await db.User.findById(req.params.current_user);
+    const currentUser = await db.User.findById(req.body.currentUser);
 
     if (
-      likedMessage.likes.filter(like => like.user.toString() === req.user.id)
-        .length > 0
+      likedMessage.likes.filter(
+        like => like.user.toString() === currentUser._id
+      ).length > 0
     ) {
       return res.status(400).json({ msg: "Post already liked" });
     }
@@ -57,7 +58,7 @@ exports.likeMessage = async function(req, res, next) {
 
     await likedMessage.save();
 
-    res.json(likedMessage.likes);
+   res.json(likedMessage.likes);
   } catch (err) {
     return next(err);
   }

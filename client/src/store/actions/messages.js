@@ -14,14 +14,13 @@ export const remove = id => ({
 
 export const likeMessage = (message_id, currentUser) => async dispatch => {
   try {
-    const res = await apiCall("put", `/api/update/${message_id}/${currentUser}`);
+    const res = await apiCall("put", `/api/update/${message_id}`, {currentUser});
     dispatch({
       type: LIKE_MESSAGE,
-      payload: { message_id, likes: res.data }
+      payload: { message_id, likes: res }
     });
-    console.log(res)
   } catch (err) {
-    addError(err.message);
+    return;
   }
 };
 
