@@ -21,23 +21,23 @@ class MessageList extends Component {
         likes={m.likes}
         username={m.user.username}
         profileImageUrl={m.user.profileImageUrl}
-        likeMessage={likeMessage.bind(this, m._id, currentUser)}
+        likeMessage={() => likeMessage(m._id, currentUser)}
         removeMessage={removeMessage.bind(this, m.user._id, m._id)}
         isCorrectUser={currentUser === m.user._id}
       />
     ));
-    return <ul className='message'>{messageList}</ul>;
+    return <ul className="message">{messageList}</ul>;
   }
 }
-
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   return {
     messages: state.messages,
     currentUser: state.currentUser.user.id
   };
-}
+};
 
-export default connect(
-  mapStateToProps,
-  { fetchMessages, likeMessage, removeMessage }
-)(MessageList);
+export default connect(mapStateToProps, {
+  fetchMessages,
+  likeMessage,
+  removeMessage
+})(MessageList);
