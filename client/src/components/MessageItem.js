@@ -8,11 +8,11 @@ let hRef = "#";
 class MessageItem extends Component {
   state = { showLikes: true };
 
-  handleOnLike = event => {
+  handleOnLike = () => {
     this.setState({
       showLikes: true
     });
-    this.props.likeMessage(this.props.likes, this.props.message);
+    this.props.likeMessage();
   };
 
   render() {
@@ -25,6 +25,7 @@ class MessageItem extends Component {
       removeMessage,
       isCorrectUser
     } = this.props;
+
     return (
       <Fragment>
         <li className='message__item'>
@@ -58,7 +59,7 @@ class MessageItem extends Component {
                   </svg>
                 </div>
                 {this.state.showLikes ? (
-                  <span className='message__item-notification'>{likes}</span>
+                  likes.length > 0 && <span className='message__item-notification'>{likes.length}</span>
                 ) : null}
               </Fragment>
             )}

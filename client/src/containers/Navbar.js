@@ -374,15 +374,15 @@ class Navbar extends Component {
                 className='user-nav__user-photo'
               />
               <span className='user-nav__user-name'>Account</span>
-              <div class='user-nav_profile'>
-                <div class='user-nav_profile_item-box'>
-                  <div class='user-nav_profile_item'>
+              <div className='user-nav_profile'>
+                <div className='user-nav_profile_item-box'>
+                  <div className='user-nav_profile_item'>
                     <Link to='/signin' className='user-nav__link'>
                       <UserSVG />
                       Log in
                     </Link>
                   </div>
-                  <div class='user-nav_profile_item'>
+                  <div className='user-nav_profile_item'>
                     <Link to='/signup' className='user-nav__link'>
                       <UserPlusSVG />
                       Sign up

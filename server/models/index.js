@@ -3,8 +3,8 @@ mongoose.set("debug", true);
 mongoose.Promise = Promise;
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/chatta", {
   keepAlive: true,
-  useNewUrlParser: true
-  // useMongoClient: true,
+  useNewUrlParser: true,
+  useUnifiedTopology: true
 });
 
 module.exports.User = require("./user");
