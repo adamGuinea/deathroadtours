@@ -12,8 +12,8 @@ class MessageList extends Component {
     this.props.fetchMessages();
   }
   render() {
-    const { messages, removeMessage, currentUser, likeMessage } = this.props;
-    let messageList = messages.map(m => (
+    const { listData, removeMessage, currentUser, likeMessage } = this.props;
+    let messageList = listData.messages.map(m => (
       <MessageItem
         key={m._id}
         date={m.createdAt}
@@ -31,7 +31,7 @@ class MessageList extends Component {
 }
 const mapStateToProps = state => {
   return {
-    messages: state.messages,
+    listData: state.messages,
     currentUser: state.currentUser.user.id
   };
 };
