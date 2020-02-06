@@ -77,7 +77,6 @@ exports.unlikeMessage = async function(req, res, next) {
       .map(like => like.user.toString())
       .indexOf(currentUser._id.toString());
 
-
     unlikedMessage.likes.splice(likeIndex, 1);
 
     await unlikedMessage.save();

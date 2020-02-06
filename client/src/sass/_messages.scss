@@ -117,7 +117,7 @@
       transform: scale(1);
 
       @supports (-webkit-mask-image: url()) or (-webkit-mask-image: url()) {
-        background-color: var(--color-primary);
+        background-color: var(--color-grey-light-4);
         -webkit-mask-image: url("../images/thumbs-down.svg");
         -webkit-mask-size: cover;
         mask-image: url("../images/thumbs-down.svg");
@@ -128,7 +128,7 @@
         &-icon {
           position: relative;
           display: flex;
-          fill: var(--color-primary);
+          fill: var(--color-grey-light-4);
           width: inherit;
           height: inherit;
           overflow: hidden;
