@@ -8,11 +8,18 @@ let hRef = "#";
 class MessageItem extends Component {
   state = { showLikes: true };
 
-  handleOnLike = () => {
+  handleLike = () => {
     this.setState({
       showLikes: true
     });
     this.props.likeMessage();
+  };
+
+  handleUnlike = () => {
+    this.setState({
+      showLikes: true
+    });
+    this.props.unlikeMessage();
   };
 
   render() {
@@ -51,10 +58,19 @@ class MessageItem extends Component {
               <Fragment>
                 <div
                   tabIndex='1'
-                  onClick={this.handleOnLike}
+                  onClick={this.handleLike}
                   className='message__area-like'
                 >
                   <svg className='message__area-like-icon'>
+                    <use xlinkHref='/sprite.svg#icon-thumbs-up' />
+                  </svg>
+                </div>
+                <div
+                  tabIndex='1'
+                  onClick={this.handleUnlike}
+                  className='message__area-unlike'
+                >
+                  <svg className='message__area-unlike-icon'>
                     <use xlinkHref='/sprite.svg#icon-thumbs-up' />
                   </svg>
                 </div>

@@ -1,4 +1,4 @@
-import { REMOVE_MESSAGE, LOAD_MESSAGES, LIKE_MESSAGE } from "../actionTypes";
+import { REMOVE_MESSAGE, LOAD_MESSAGES, UPDATE_LIKES } from "../actionTypes";
 
 const initialState = {
   messages: []
@@ -18,7 +18,7 @@ const message = (state = initialState, action) => {
         messages: state.messages.filter(message => message._id !== action.id)
       };
 
-    case LIKE_MESSAGE:
+    case UPDATE_LIKES:
       return {
         ...state,
         messages: state.messages.map(message =>
