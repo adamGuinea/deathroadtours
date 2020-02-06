@@ -1,6 +1,6 @@
 import { apiCall } from "../../services/api";
 import { addError } from "./errors";
-import { LOAD_MESSAGES, REMOVE_MESSAGE, LIKE_MESSAGE } from "../actionTypes";
+import { LOAD_MESSAGES, REMOVE_MESSAGE, UPDATE_LIKES } from "../actionTypes";
 
 export const loadMessages = messages => ({
   type: LOAD_MESSAGES,
@@ -14,11 +14,25 @@ export const remove = id => ({
 
 export const likeMessage = (message_id, currentUser) => async dispatch => {
   try {
-    const res = await apiCall("put", `/api/update/${message_id}`, {
+    const res = await apiCall("put", `/api/update/like/${message_id}`, {
       currentUser
     });
     dispatch({
-      type: LIKE_MESSAGE,
+      type: UPDATE_LIKES,
+      payload: { message_id, likes: res }
+    });
+  } catch (err) {
+    return;
+  }
+};
+
+export const unlikeMessage = (message_id, currentUser) => async dispatch => {
+  try {
+    const res = await apiCall("put", `/api/update/unlike/${message_id}`, {
+      currentUser
+    });
+    dispatch({
+      type: UPDATE_LIKES,
       payload: { message_id, likes: res }
     });
   } catch (err) {

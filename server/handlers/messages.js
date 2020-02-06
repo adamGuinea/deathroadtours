@@ -59,4 +59,30 @@ exports.likeMessage = async function(req, res, next) {
   } catch (err) {
     return next(err);
   }
+}
+
+exports.unlikeMessage = async function(req, res, next) {
+  try {
+    const unlikedMessage = await db.Message.findById(req.params.message_id);
+    const currentUser = await db.User.findById(req.body.currentUser);
+    if (
+      unlikedMessage.likes.filter(
+        like => like.user.toString() === currentUser._id.toString()
+      ).length === 0
+    ) {
+      return res.status(400).json({ msg: "You have to like it first" });
+    }
+
+    const likeIndex = unlikedMessage.likes
+      .map(like => like.user.toString())
+      .indexOf(currentUser._id.toString());
+
+    unlikedMessage.likes.splice(likeIndex, 1);
+
+    await unlikedMessage.save();
+
+    res.json(unlikedMessage.likes);
+  } catch (err) {
+    return next(err);
+  }
 };
