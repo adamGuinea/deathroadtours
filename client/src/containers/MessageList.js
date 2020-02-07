@@ -20,6 +20,7 @@ class MessageList extends Component {
         date={m.createdAt}
         text={m.text}
         likes={m.likes}
+        currentUser={currentUser}
         username={m.user.username}
         profileImageUrl={m.user.profileImageUrl}
         likeMessage={() => likeMessage(m._id, currentUser)}
