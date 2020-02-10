@@ -1,0 +1,48 @@
+@mixin updateButton {
+  cursor: pointer;
+  border: none;
+  margin: 2rem auto;
+  border-radius: 3px;
+  text-align: center;
+  font-size: 1.6rem;
+  display: flex;
+  padding: .5rem;
+  background-color: var(--color-grey-light-2);
+  transition: all .2s ease-in;
+
+  &:hover {
+    color: var(--color-grey-light-1);
+    background-color: var(--color-grey-light-4);
+    }
+}
+
+.user {
+  display: flex;
+  flex-direction: column;
+
+  &__aside {
+    width: 20rem;
+
+    @media only screen and (max-width: $bp-smallish) {
+      display: none;
+    }
+  }
+
+  &__name {
+    margin-top: 1rem;
+    font-size: 1.7rem;
+    font-weight: 700;
+
+    @media only screen and (max-width: $bp-smallish) {
+      display: none;
+    }
+  }
+
+  &__update {
+    @include updateButton;
+  }
+
+  .submit {
+    @include updateButton;
+  }
+}
