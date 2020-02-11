@@ -1,7 +1,11 @@
 import React, { useState } from "react";
+import { connect } from 'react-redux';
+import {
+  updateUser
+} from "../store/actions/auth";
 import DefaultProfileImg from "../images/default-profile-image.jpg";
 
-const UserAside = ({ profileImageUrl, username }) => {
+const UserAside = ({ profileImageUrl, username, id }) => {
   const [updateTab, setUpdateTab] = useState(false);
   const [userData, setUserData] = useState({
     username: username,
@@ -12,10 +16,14 @@ const UserAside = ({ profileImageUrl, username }) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
   };
 
+  const handleSubmit = () => {
+    updateUser(userData)
+  }
+
   return (
     <aside className="user">
       <img
-        className="user__aside"
+        className="user__image"
         src={profileImageUrl || DefaultProfileImg}
         alt={username}
       />
@@ -47,11 +55,11 @@ const UserAside = ({ profileImageUrl, username }) => {
             defaultValue={profileImageUrl}
           />
 
-          <button className='submit'>Update</button>
+          <button onClick={() => handleSubmit()} className='submit'>Update</button>
         </div>
       }
     </aside>
   );
 };
 
-export default UserAside;
+export default connect(null, { updateUser })(UserAside);
