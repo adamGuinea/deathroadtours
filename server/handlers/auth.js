@@ -65,11 +65,18 @@ exports.signup = async function(req, res, next) {
 
 exports.update = async (req, res, next) => {
   try {
-      let user = db.User.findOne(req.body.user);
+    let newUserData = await req.body.userData;
+
+    let oldUserData = await db.User.findById(req.params.id);
+
+    const updatedUserData = Object.assign(oldUserData, newUserData)
+
+    await updatedUserData.save();
+    return res.json(updatedUserData);
   } catch (err) {
     return next({
       status: 400,
-      message: "Please choose a valid username and picture"
+      message: err.message
     });
   }
 };

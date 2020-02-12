@@ -5,12 +5,14 @@ import {
 } from "../store/actions/auth";
 import DefaultProfileImg from "../images/default-profile-image.jpg";
 
-const UserAside = ({ profileImageUrl, username, id }) => {
+const UserAside = ({ currentUser, updateUser }) => {
   const [updateTab, setUpdateTab] = useState(false);
   const [userData, setUserData] = useState({
-    username: username,
-    profileImageUrl: profileImageUrl
+    username: currentUser.username,
+    profileImageUrl: currentUser.profileImageUrl
   });
+
+  const { username, profileImageUrl } = currentUser;
 
   const handleChange = e => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
@@ -62,4 +64,10 @@ const UserAside = ({ profileImageUrl, username, id }) => {
   );
 };
 
-export default connect(null, { updateUser })(UserAside);
+
+const mapStateToProps = (state) => {
+  return {
+  currentUser: state.currentUser.user
+}}
+
+export default connect(mapStateToProps, { updateUser })(UserAside);

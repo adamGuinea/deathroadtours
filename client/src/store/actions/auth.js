@@ -1,5 +1,5 @@
 import { apiCall, setTokenHeader } from "../../services/api";
-import { SET_CURRENT_USER, UPDATE_CURRENT_USER} from "../actionTypes";
+import { SET_CURRENT_USER, UPDATE_CURRENT_USER } from "../actionTypes";
 import { addError, removeError } from "./errors";
 
 export function setCurrentUser(user) {
@@ -40,14 +40,17 @@ export function authUser(type, userData) {
   };
 }
 
-export const updateUser = (id, userData) => async dispatch => {
+export const updateUser = userData => async (dispatch, getState) => {
+  let { currentUser } = getState();
+  const id = currentUser.user.id;
+
   try {
-    const user = await apiCall("put", `/api/auth/${id}`, {
+    const updatedUser = await apiCall("put", `/api/auth/user/${id}`, {
       userData
     });
     dispatch({
       type: UPDATE_CURRENT_USER,
-      payload: user
+      updatedUser
     });
   } catch (err) {
     return;
