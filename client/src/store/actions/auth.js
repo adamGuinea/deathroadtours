@@ -40,19 +40,18 @@ export function authUser(type, userData) {
   };
 }
 
-export const updateUser = userData => async (dispatch, getState) => {
+export const updateUser = (userData) => async (dispatch, getState) => {
   let { currentUser } = getState();
   const id = currentUser.user.id;
-
   try {
     const updatedUser = await apiCall("put", `/api/auth/user/${id}`, {
       userData
     });
     dispatch({
       type: UPDATE_CURRENT_USER,
-      updatedUser
+      payload: { currentUser: updatedUser }
     });
   } catch (err) {
-    return;
+    dispatch(addError(err.message));
   }
 };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from 'react-redux';
 import {
   updateUser
@@ -6,13 +6,20 @@ import {
 import DefaultProfileImg from "../images/default-profile-image.jpg";
 
 const UserAside = ({ currentUser, updateUser }) => {
+  const [storedUsername, setStoredUsername] = useState(null)
+  const [storedImage, setStoredImage] = useState(null)
   const [updateTab, setUpdateTab] = useState(false);
   const [userData, setUserData] = useState({
     username: currentUser.username,
     profileImageUrl: currentUser.profileImageUrl
   });
 
-  const { username, profileImageUrl } = currentUser;
+  useEffect(()=> {
+    let storedUsername = localStorage.getItem('localUsername');
+    let storedImage = localStorage.getItem('localImage');
+    setStoredUsername(storedUsername)
+    setStoredImage(storedImage)
+  })
 
   const handleChange = e => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
@@ -20,16 +27,19 @@ const UserAside = ({ currentUser, updateUser }) => {
 
   const handleSubmit = () => {
     updateUser(userData)
+    setUpdateTab(false)
+    localStorage.setItem('localUsername', userData.username)
+    localStorage.setItem('localImage', userData.profileImageUrl)
   }
 
   return (
     <aside className="user">
       <img
         className="user__image"
-        src={profileImageUrl || DefaultProfileImg}
-        alt={username}
+        src={storedImage ? storedImage : currentUser.profileImageUrl || DefaultProfileImg}
+        alt={storedUsername || currentUser.username}
       />
-      <div className='user__name'>{username}</div>
+      <div className='user__name'>{storedUsername ? storedUsername : currentUser.username}</div>
       <button className="user__update" onClick={() => setUpdateTab(!updateTab)}>
         {updateTab ? 'Cancel' : 'Update Profile'}
       </button>
@@ -43,7 +53,7 @@ const UserAside = ({ currentUser, updateUser }) => {
             id="username"
             name="username"
             onChange={e => handleChange(e)}
-            defaultValue={username}
+            defaultValue={storedUsername || currentUser.username}
             type="text"
           />
           <label htmlFor="image-url">Avatar URL:</label>
@@ -54,7 +64,7 @@ const UserAside = ({ currentUser, updateUser }) => {
             placeholder="not required"
             type="text"
             onChange={e => handleChange(e)}
-            defaultValue={profileImageUrl}
+            defaultValue={storedImage || currentUser.profileImageUrl}
           />
 
           <button onClick={() => handleSubmit()} className='submit'>Update</button>
@@ -64,10 +74,10 @@ const UserAside = ({ currentUser, updateUser }) => {
   );
 };
 
-
 const mapStateToProps = (state) => {
   return {
-  currentUser: state.currentUser.user
-}}
+    currentUser: state.currentUser.user
+  }
+}
 
 export default connect(mapStateToProps, { updateUser })(UserAside);
