@@ -10,7 +10,7 @@ const AuthForm = props => {
 
   const { email, username, password, profileImageUrl } = formData;
 
-  const { history, removeError, errors, heading, signUp } = props;
+  const { history, removeError, errors, heading, signUp, buttonText } = props;
 
   const emailRef = useRef();
   const usernameRef = useRef();
@@ -29,7 +29,7 @@ const AuthForm = props => {
         if (key === "Enter") passwordRef.current.focus();
         break;
       case "password":
-        if (key === "Enter") usernameRef ? usernameRef.current.focus() : submitRef.current.focus();
+        if (key === "Enter") usernameRef.current ? usernameRef.current.focus() : submitRef.current.focus();
         break;
       case "username":
         if (key === "Enter") profileImageRef.current.focus();
@@ -77,7 +77,7 @@ const AuthForm = props => {
             id="email"
             name="email"
             ref={emailRef}
-            onKeyDown={e => sendKeyDown(e, 'email')}
+            onKeyDown={e => sendKeyDown(e, "email")}
             onChange={e => handleChange(e)}
             value={email}
             type="text"
@@ -88,7 +88,7 @@ const AuthForm = props => {
             id="password"
             name="password"
             ref={passwordRef}
-            onKeyDown={e => sendKeyDown(e, 'password')}
+            onKeyDown={e => sendKeyDown(e, "password")}
             onChange={e => handleChange(e)}
             value={password}
             type="password"
@@ -101,7 +101,7 @@ const AuthForm = props => {
                 id="username"
                 name="username"
                 ref={usernameRef}
-                onKeyDown={e => sendKeyDown(e, 'username')}
+                onKeyDown={e => sendKeyDown(e, "username")}
                 onChange={e => handleChange(e)}
                 value={username}
                 type="text"
@@ -112,7 +112,7 @@ const AuthForm = props => {
                 id="image-url"
                 name="profileImageUrl"
                 ref={profileImageRef}
-                onKeyDown={e => sendKeyDown(e, 'profileImage')}
+                onKeyDown={e => sendKeyDown(e, "profileImage")}
                 placeholder="not required"
                 onChange={e => handleChange(e)}
                 type="text"
@@ -122,7 +122,7 @@ const AuthForm = props => {
           )}
 
           <button ref={submitRef} className="btn__auth" type="submit">
-            {props.buttonText}
+            {buttonText}
           </button>
         </form>
       </div>

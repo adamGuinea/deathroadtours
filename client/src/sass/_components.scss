@@ -332,17 +332,6 @@
   }
 }
 
-////////////
-//USER ASIDE
-
-.user-aside {
-  width: 20rem;
-
-  @media only screen and (max-width: $bp-smallish) {
-    display: none;
-  }
-}
-
 @mixin suggestion_styles {
   display: flex;
   flex-direction: column;
