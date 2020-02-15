@@ -14,7 +14,7 @@ const UserAside = ({ currentUser, updateUser }) => {
     profileImageUrl: currentUser.profileImageUrl
   });
 
-  useEffect(()=> {
+  useEffect(() => {
     let storedUsername = localStorage.getItem('localUsername');
     let storedImage = localStorage.getItem('localImage');
     setStoredUsername(storedUsername)
@@ -36,7 +36,7 @@ const UserAside = ({ currentUser, updateUser }) => {
     <aside className="user">
       <img
         className="user__image"
-        src={storedImage ? storedImage : currentUser.profileImageUrl || DefaultProfileImg}
+        src={storedImage ? storedImage : currentUser.profileImageUrl ? currentUser.profileImageUrl : DefaultProfileImg}
         alt={storedUsername || currentUser.username}
       />
       <div className='user__name'>{storedUsername ? storedUsername : currentUser.username}</div>
