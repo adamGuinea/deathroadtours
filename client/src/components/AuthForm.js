@@ -1,4 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
+import classNames from 'classnames';
+import { Link } from 'react-router-dom';
+
+import defaultImage from '../images/default-profile-image.jpg';
 
 const AuthForm = props => {
   const [formData, setFormData] = useState({
@@ -10,7 +14,7 @@ const AuthForm = props => {
 
   const { email, username, password, profileImageUrl } = formData;
 
-  const { history, removeError, errors, heading, signUp, buttonText } = props;
+  const { history, removeError, errors, buttonText, signUp, heading } = props;
 
   const emailRef = useRef();
   const usernameRef = useRef();
@@ -48,7 +52,7 @@ const AuthForm = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const authType = props.signUp ? "signup" : "signin";
+    const authType = signUp ? "signup" : "signin";
     props
       .onAuth(authType, formData)
       .then(() => {
@@ -64,16 +68,26 @@ const AuthForm = props => {
   });
 
   return (
-    <div className="form">
-      <div className="col-md-4 col-sm-6">
+    <div className="form fadeInDown">
+      <div className="form__content">
+        <Link to='/signin' className={classNames({
+          active: !signUp
+        })}>Sign In</Link>
+        <Link to='/signup' className={classNames({
+          active: signUp
+        })}>Sign Up</Link>
+        <div className="fadeIn first">
+          <img src={defaultImage} alt="default avatar" id="icon" />
+        </div>
+        <div className="fadeIn second">
+          <h2 className='form__heading'>{heading}</h2>
+        </div>
         <form onSubmit={e => handleSubmit(e)}>
-          <h2 className="form__heading">{heading}</h2>
           {errors.message && (
             <div className="alert alert-danger">{errors.message}</div>
           )}
-          <label htmlFor="email">Email:</label>
           <input
-            className="form-control"
+            className="fadeIn second"
             id="email"
             name="email"
             ref={emailRef}
@@ -81,23 +95,23 @@ const AuthForm = props => {
             onChange={e => handleChange(e)}
             value={email}
             type="text"
+            placeholder='email'
           />
-          <label htmlFor="password">Password:</label>
           <input
-            className="form-control margin-bottom"
+            className="fadeIn third"
             id="password"
             name="password"
             ref={passwordRef}
             onKeyDown={e => sendKeyDown(e, "password")}
             onChange={e => handleChange(e)}
             value={password}
-            type="password"
+            type="text"
+            placeholder='password'
           />
           {signUp && (
             <div>
-              <label htmlFor="username">Username:</label>
               <input
-                className="form-control"
+                className="fadeIn third"
                 id="username"
                 name="username"
                 ref={usernameRef}
@@ -105,25 +119,24 @@ const AuthForm = props => {
                 onChange={e => handleChange(e)}
                 value={username}
                 type="text"
+                placeholder='Username'
               />
-              <label htmlFor="image-url">Avatar URL:</label>
+              <label htmlFor="image-url"></label>
               <input
-                className="form-control margin-bottom"
+                className="fadeIn third"
                 id="image-url"
                 name="profileImageUrl"
                 ref={profileImageRef}
                 onKeyDown={e => sendKeyDown(e, "profileImage")}
-                placeholder="not required"
                 onChange={e => handleChange(e)}
                 type="text"
                 value={profileImageUrl}
+                placeholder='Avatar URL: (not required)'
               />
             </div>
           )}
-
-          <button ref={submitRef} className="btn__auth" type="submit">
-            {buttonText}
-          </button>
+          <input type="submit" ref={submitRef} className="fadeIn fourth" value={buttonText}>
+          </input>
         </form>
       </div>
     </div>

@@ -44,8 +44,8 @@ const Main = props => {
                 errors={errors}
                 onAuth={authUser}
                 signUp
-                buttonText="Sign me up!"
-                heading="Join Death Road Tours today"
+                buttonText="Sign me up"
+                heading="Join Death Road Tours today!"
                 {...props}
               />
             );
