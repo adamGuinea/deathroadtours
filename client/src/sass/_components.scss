@@ -320,18 +320,6 @@
   }
 }
 
-////////////
-//AUTH FORM
-
-.form {
-  padding-top: 2rem;
-  font-size: 1.4rem;
-
-  &__heading {
-    padding-bottom: 2rem;
-  }
-}
-
 @mixin suggestion_styles {
   display: flex;
   flex-direction: column;
