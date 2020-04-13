@@ -6,6 +6,7 @@ const AuthSchema = require("../schemas/AuthSchema");
 let token;
 
 beforeAll((done) => {
+  expect.extend(matchers);
   request(app)
     .post("/api/auth/signin")
     .send({
@@ -27,6 +28,7 @@ describe("Post Endpoints", () => {
         password: "user",
       });
     expect(statusCode).toEqual(200);
+    expect(body).toMatchSchema(AuthSchema);
     done();
   });
 
