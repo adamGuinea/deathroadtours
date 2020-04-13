@@ -1,15 +1,19 @@
 version: "3"
 services:
-  app:
-    container_name: chatta
-    restart: always
-    build: .
+  ui:
+    build: ./client
     ports:
-      - "80:8081"
+      - "3000:3000"
+    depends_on:
+      - server
+  server:
+    build: ./server
+    restart: always
+    ports:
+      - "8080:8080"
     depends_on:
       - mongo
   mongo:
-    container_name: mongo
     image: mongo
     ports:
       - "27017:27017"
