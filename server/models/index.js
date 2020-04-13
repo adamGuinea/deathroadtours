@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 mongoose.set("debug", true);
 mongoose.Promise = Promise;
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/chatta", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://mongo:27017/chatta", {
   keepAlive: true,
   useNewUrlParser: true,
   useUnifiedTopology: true

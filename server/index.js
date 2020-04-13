@@ -51,3 +51,5 @@ app.use(errorHandler);
 app.listen(PORT, function() {
   console.log(`running on port ${PORT}`);
 });
+
+module.exports = app;
